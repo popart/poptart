@@ -14,8 +14,8 @@ func main() {
     fmt.Printf("Main Prog:\n")
     math.Test()
 
-    img := image.NewGray(image.Rect(0, 0, 10, 20))
-    render.RenderPoint(img, 5, 10)
+    img := render.NewGray(image.Rect(0, 0, 10, 20))
+    img.RenderPoint(5,10)
 
     f, err := os.Create("out.png")
     if err != nil {
