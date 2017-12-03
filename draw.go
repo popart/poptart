@@ -4,10 +4,10 @@ import (
     "fmt"
     "log"
     "image"
-    "image/color"
     "image/png"
     "os"
     "poptart/math"
+    "poptart/render"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
     math.Test()
 
     img := image.NewGray(image.Rect(0, 0, 10, 20))
-    img.Set(2, 2, color.Gray{0xFF})
+    render.RenderPoint(img, 5, 10)
 
     f, err := os.Create("out.png")
     if err != nil {
