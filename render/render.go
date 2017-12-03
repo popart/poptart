@@ -16,7 +16,10 @@ func NewGray(r image.Rectangle) *Gray {
 }
 
 func (img *Gray) RenderPoint(p math.Point) {
-    img.Set(int(p.X), int(p.Y), color.Gray{0xFF})
+    pixX := int(p.X)
+    pixY := int(p.Y)
+    curColor := img.GrayAt(pixX, pixY)
+    img.Set(pixX, pixY, color.Gray{curColor.Y + 0x3F})
 }
 
 func (img *Gray) RenderTriangle(t math.Triangle) {
@@ -33,8 +36,8 @@ func (img *Gray) RenderTriangle(t math.Triangle) {
     }
 
     var testP math.Point
-    for i := minX; i <= maxX; i++ {
-        for j := minY; j <= maxY; j++ {
+    for i := minX; i <= maxX; i+=.5 {
+        for j := minY; j <= maxY; j+=.5 {
             testP = math.Point{i,j}
             if math.InsideTriangle(t, testP) {
                 img.RenderPoint(testP)
