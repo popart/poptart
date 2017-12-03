@@ -14,8 +14,11 @@ func main() {
     fmt.Printf("Main Prog:\n")
     math.Test()
 
-    img := render.NewGray(image.Rect(0, 0, 10, 20))
-    img.RenderPoint(5,10)
+    img := render.NewGray(image.Rect(0, 0, 100, 100))
+    img.RenderPoint(math.Point{5, 10})
+    img.RenderTriangle(math.Triangle{math.Point{20, 20},
+        math.Point{40, 30},
+        math.Point{10, 50}})
 
     f, err := os.Create("out.png")
     if err != nil {

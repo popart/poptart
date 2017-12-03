@@ -3,25 +3,39 @@ package math
 import "fmt"
 
 type Point struct {
-    x, y int
+    X, Y int
 }
 type Vec struct {
-    x, y int
+    X, Y int
 }
 
 type Triangle = [3]Point
 
+func Min(x, y int) int {
+    if x <= y {
+        return x
+    }
+    return y
+}
+
+func Max(x, y int) int {
+    if x >= y {
+        return x
+    }
+    return y
+}
+
 func DotProduct(a, b Vec) int {
-    return (a.x * b.x) + (a.y * b.y)
+    return (a.X * b.X) + (a.Y * b.Y)
 }
 
 func Normal(a Vec) Vec {
-    return Vec{-a.y, a.x}
+    return Vec{-a.Y, a.X}
 }
 
 func Inside(a, b, c Point) bool {
-    aToB := Vec{b.x - a.x, b.y - a.y}
-    aToC := Vec{c.x - a.x, c.y - a.y}
+    aToB := Vec{b.X - a.X, b.Y - a.Y}
+    aToC := Vec{c.X - a.X, c.Y - a.Y}
 
     return DotProduct(Normal(aToB), aToC) >= 0
 }
