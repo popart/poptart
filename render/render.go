@@ -3,6 +3,7 @@ package render
 import (
     "image"
     "image/color"
+    m "math"
     "poptart/math"
 )
 
@@ -15,7 +16,7 @@ func NewGray(r image.Rectangle) *Gray {
 }
 
 func (img *Gray) RenderPoint(p math.Point) {
-    img.Set(p.X, p.Y, color.Gray{0xFF})
+    img.Set(int(p.X), int(p.Y), color.Gray{0xFF})
 }
 
 func (img *Gray) RenderTriangle(t math.Triangle) {
@@ -25,10 +26,10 @@ func (img *Gray) RenderTriangle(t math.Triangle) {
     maxY := t[0].Y
 
     for _, p := range t {
-        minX = math.Min(minX, p.X)
-        maxX = math.Max(maxX, p.X)
-        minY = math.Min(minY, p.Y)
-        maxY = math.Max(maxY, p.Y)
+        minX = m.Min(minX, p.X)
+        maxX = m.Max(maxX, p.X)
+        minY = m.Min(minY, p.Y)
+        maxY = m.Max(maxY, p.Y)
     }
 
     var testP math.Point

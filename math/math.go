@@ -3,29 +3,15 @@ package math
 import "fmt"
 
 type Point struct {
-    X, Y int
+    X, Y float64
 }
 type Vec struct {
-    X, Y int
+    X, Y float64
 }
 
 type Triangle = [3]Point
 
-func Min(x, y int) int {
-    if x <= y {
-        return x
-    }
-    return y
-}
-
-func Max(x, y int) int {
-    if x >= y {
-        return x
-    }
-    return y
-}
-
-func DotProduct(a, b Vec) int {
+func DotProduct(a, b Vec) float64 {
     return (a.X * b.X) + (a.Y * b.Y)
 }
 
